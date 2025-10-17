@@ -456,21 +456,21 @@ a:hover {
         position: relative;
         height: auto;
         padding: 1.5rem;
-}
+    }
 
-.main-content {
-    margin-left: 0;
-    padding: 2rem 1.5rem;
-}
+    .main-content {
+        margin-left: 0;
+        padding: 2rem 1.5rem;
+    }
 
-.education-row {
-    flex-direction: column;
-    gap: 0.5rem;
-}
+    .education-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 
-.education-right {
-    text-align: left;
-}
+    .education-right {
+        text-align: left;
+    }
 }
 
 @media (max-width: 480px) {
