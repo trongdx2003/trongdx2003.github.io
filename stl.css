@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'EB Garamond', serif;
     font-size: 18px;
+    font-weight: medium;
 }
 
 body {
@@ -17,6 +18,37 @@ body {
 li {
     margin-top: 1ex;
     list-style-position: inside;
+}
+
+ol.circle-list {
+  counter-reset: list;
+  list-style: none;
+  padding-left: 0;
+}
+
+ol.circle-list li {
+  counter-increment: list; /* increase counter */
+  position: relative;
+  margin: 10px 0;
+  padding-left: 40px;
+}
+
+ol.circle-list li::before {
+  content: counter(list);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .sidebar {
@@ -116,12 +148,11 @@ h2 {
 .divider {
     border: none;
     border-top: 2px solid #ddd;
-    margin: 1.5rem 0;
+    margin-bottom: 1.5rem;
 }
 
 p {
     line-height: 1.6;
-    color: #666;
     margin-bottom: 1rem;
     font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
@@ -129,7 +160,6 @@ p {
 ul {
     margin-left: 2rem;
     line-height: 1.8;
-    color: #666;
     font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
@@ -198,15 +228,13 @@ ul {
 .experience-description {
     margin-top: 1rem;
     line-height: 1.6;
-    color: #666;
     text-align: justify;
     font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
 .footer {
     text-align: center;
-    color: gray;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     padding-top: 1.5rem;
     border-top: 2px solid #ddd;
     font-size: clamp(0.8rem, 1.5vw, 0.9rem);
