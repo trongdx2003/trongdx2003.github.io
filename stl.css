@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family: 'EB Garamond', serif;
     font-weight: medium;
-    font-size: clamp(11pt, 1.5vw, 13pt);
+    font-size: clamp(12pt, 1.5vw, 13pt);
 }
 
 body {
@@ -97,7 +97,7 @@ ol.circle-list li::before {
     background-color: #f0f0f0;
     cursor: pointer;
     text-align: left;
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    /* font-size: clamp(0.9rem, 1.5vw, 1rem); */
     border-radius: 5px;
     transition: background-color 0.3s;
 }
@@ -155,13 +155,13 @@ h2 {
 p {
     line-height: 1.6;
     margin-bottom: 1rem;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    /* font-size: clamp(0.9rem, 1.8vw, 1rem); */
 }
 
 ul {
     margin-left: 2rem;
     line-height: 1.8;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    /* font-size: clamp(0.9rem, 1.8vw, 1rem); */
 }
 
 .expander {
@@ -180,7 +180,7 @@ ul {
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    /* font-size: clamp(0.9rem, 2vw, 1.1rem); */
 }
 
 .expander-header:hover {
@@ -189,7 +189,7 @@ ul {
 
 .expander-header::after {
     content: '▶';
-    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    /* font-size: clamp(0.7rem, 1.5vw, 0.9rem); */
     transition: transform 0.3s;
 }
 
@@ -230,16 +230,16 @@ ul {
     margin-top: 1rem;
     line-height: 1.6;
     text-align: justify;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    /* font-size: clamp(0.9rem, 1.8vw, 1rem); */
 }
 
-.footer {
+/* .footer {
     text-align: center;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
     border-top: 2px solid #ddd;
     font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-}
+} */
 
 a {
     /* color: #4CAF50; */
