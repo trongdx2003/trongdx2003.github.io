@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dxtrong's Homepage</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="stl2.css">
+    <link rel="stylesheet" href="stl3.css">
 </head>
 
 <body>
@@ -39,12 +39,15 @@
 
     <div class="main-content">
         <div class="mobile-nav">
-            <div class="mobile-nav-buttons">
-                <button class="mobile-nav-btn active" data-section="about">About</button>
-                <button class="mobile-nav-btn" data-section="education">Education</button>
-                <button class="mobile-nav-btn" data-section="experience">Experience</button>
-                <button class="mobile-nav-btn" data-section="publications">Publications</button>
-                <button class="mobile-nav-btn" data-section="blog">Projects</button>
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-buttons">
+                    <button class="back-to-menu" onclick="goBackToMenu()">Menu</button>
+                    <button class="mobile-nav-btn" data-section="about">About</button>
+                    <button class="mobile-nav-btn" data-section="education">Education</button>
+                    <button class="mobile-nav-btn" data-section="experience">Experience</button>
+                    <button class="mobile-nav-btn" data-section="publications">Publications</button>
+                    <button class="mobile-nav-btn" data-section="blog">Projects</button>
+                </div>
             </div>
         </div>
         
@@ -112,7 +115,7 @@
             
             <div class="expander">
                 <div class="expander-header" onclick="toggleExpander(this)">
-                    Student Researcher
+                    Research Intern
                 </div>
                 <div class="expander-content">
                     <div class="education-row">
@@ -210,19 +213,38 @@
             });
         });
 
+        function goBackToMenu() {
+            if (isMobile()) {
+                sidebar.classList.remove('hidden');
+                mainContent.classList.add('hidden');
+                window.scrollTo(0, 0);
+                navButtons.forEach(b => b.classList.remove('active'));
+                mobileNavButtons.forEach(b => b.classList.remove('active'));
+            }
+        }
+
         window.addEventListener('resize', () => {
             if (!isMobile()) {
                 sidebar.classList.remove('hidden');
                 mainContent.classList.remove('hidden');
+                const activeSection = document.querySelector('.section.active');
+                if (activeSection) {
+                    const sectionId = activeSection.id;
+                    const sidebarBtn = document.querySelector(`.nav-btn[data-section="${sectionId}"]`);
+                    if (sidebarBtn) sidebarBtn.classList.add('active');
+                }
             } else {
                 sidebar.classList.remove('hidden');
                 mainContent.classList.add('hidden');
+                navButtons.forEach(b => b.classList.remove('active'));
+                mobileNavButtons.forEach(b => b.classList.remove('active'));
             }
         });
 
-
         if (isMobile()) {
             mainContent.classList.add('hidden');
+            navButtons.forEach(b => b.classList.remove('active'));
+            mobileNavButtons.forEach(b => b.classList.remove('active'));
         }
 
         function toggleExpander(header) {
@@ -238,5 +260,6 @@
             }
         }
     </script>
+
 </body>
 </html>
