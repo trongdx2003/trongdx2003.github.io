@@ -22,7 +22,7 @@
             box-shadow: 7px 0 5px rgba(0,0,0,0.1);
             position: fixed;
             overflow-y: auto;
-            height: auto;
+            height: 100vh;
         }
 
         .profile-section {

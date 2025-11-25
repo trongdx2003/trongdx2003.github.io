@@ -175,6 +175,8 @@
         const sidebar = document.querySelector('.sidebar');
         const mainContent = document.querySelector('.main-content');
 
+        let currentMode = null;
+
         function isMobile() {
             return window.innerWidth <= 968;
         }
@@ -224,28 +226,41 @@
             }
         }
 
+        let resizeTimer;
         window.addEventListener('resize', () => {
-            if (!isMobile()) {
-                sidebar.classList.remove('hidden');
-                mainContent.classList.remove('hidden');
-                const activeSection = document.querySelector('.section.active');
-                if (activeSection) {
-                    const sectionId = activeSection.id;
-                    const sidebarBtn = document.querySelector(`.nav-btn[data-section="${sectionId}"]`);
-                    if (sidebarBtn) sidebarBtn.classList.add('active');
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                const newMode = isMobile() ? 'mobile' : 'desktop';
+                
+                if (currentMode !== newMode) {
+                    currentMode = newMode;
+                    
+                    if (!isMobile()) {
+                        sidebar.classList.remove('hidden');
+                        mainContent.classList.remove('hidden');
+                        const activeSection = document.querySelector('.section.active');
+                        if (activeSection) {
+                            const sectionId = activeSection.id;
+                            const sidebarBtn = document.querySelector(`.nav-btn[data-section="${sectionId}"]`);
+                            if (sidebarBtn) sidebarBtn.classList.add('active');
+                        }
+                    } else {
+                        sidebar.classList.remove('hidden');
+                        mainContent.classList.add('hidden');
+                        navButtons.forEach(b => b.classList.remove('active'));
+                        mobileNavButtons.forEach(b => b.classList.remove('active'));
+                    }
                 }
-            } else {
-                sidebar.classList.remove('hidden');
-                mainContent.classList.add('hidden');
-                navButtons.forEach(b => b.classList.remove('active'));
-                mobileNavButtons.forEach(b => b.classList.remove('active'));
-            }
+            }, 250); 
         });
 
         if (isMobile()) {
+            currentMode = 'mobile';
             mainContent.classList.add('hidden');
             navButtons.forEach(b => b.classList.remove('active'));
             mobileNavButtons.forEach(b => b.classList.remove('active'));
+        } else {
+            currentMode = 'desktop';
         }
 
         function toggleExpander(header) {
